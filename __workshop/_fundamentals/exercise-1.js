@@ -82,7 +82,24 @@ const inputData = {
 
 function transformData(data) {
   // Your code here
+  let newobj = {};
+  newobj.name = data.name;
+  newobj.age = data.age;
+  newobj.status = data.status;
+  newobj.address = {streetAddress: data.address1, city: data.addressCity, state: data.addressState, country: data.addressCountry};
+  newobj.superpowers = [data.superpower1];
+  newobj.relationships = [
+    {type: "mother", name: data.motherName, age: data.motherAge, status: data.motherStatus, superpowers: []},
+    {type: "girlfriend", name: data.girlfriendName, age: data.girlfriendAge, status: data.girlfriendStatus, superpowers: [data.girlfriendSuperpower1, data.girlfriendSuperpower2]},
+    
+  ]
+
+  return newobj
 }
+
+console.log(
+  transformData(inputData)
+)
 
 // Use a console.log to verify
 // `JSON.stringify` is used to "pretty-print" the output, so that it's easy

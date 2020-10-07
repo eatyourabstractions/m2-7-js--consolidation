@@ -62,6 +62,17 @@ const favoriteDessertsGroupB = {
 
 function groupByValue(obj) {
   // do something
+  let desserts = {};
+  let ans = {}
+  for(let [name, sweet] of Object.entries(obj)){
+    if(desserts.hasOwnProperty(sweet)){
+      desserts[sweet].push(name);
+    } else{
+      desserts[sweet] = [name]
+    }
+  }
+   Object.entries(desserts).sort((a,b) => a[0] - b[0]).forEach(data => ans[data[0]] = data[1]);
+   return ans
 }
 
 // Verification via console.log()

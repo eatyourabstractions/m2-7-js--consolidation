@@ -54,6 +54,17 @@ const favoriteDessertsGroupB = {
 
 function sortByPopularity(obj) {
   // Write code
+  let desserts = {}
+  for(des in obj){
+    if(desserts.hasOwnProperty(obj[des])){
+      desserts[obj[des]]++
+    } else{
+      desserts[obj[des]] = 1
+    }
+  }
+  
+  return Object.entries(desserts).sort((a,b) => a[1] - b[1]).reverse().map(tuple => tuple[0])
+  
 }
 
 // Verification via console.log()
